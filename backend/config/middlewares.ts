@@ -1,5 +1,6 @@
+import { env } from "@strapi/utils";
+
 export default [
-	"strapi::logger",
 	"strapi::errors",
 	{
 		name: "strapi::security",
@@ -13,14 +14,20 @@ export default [
 						"data:",
 						"blob:",
 						"dl.airtable.com",
-						"strapi-em-gallery-aws-s3-images-bucket.s3.sa-east-1.amazonaws.com",
+						`https://${env("AWS_BUCKET")}.s3.${env(
+							"AWS_REGION"
+						)}.amazonaws.com/`,
+						env("CDN_URL"),
 					],
 					"media-src": [
 						"'self'",
 						"data:",
 						"blob:",
 						"dl.airtable.com",
-						"strapi-em-gallery-aws-s3-images-bucket.s3.sa-east-1.amazonaws.com",
+						`https://${env("AWS_BUCKET")}.s3.${env(
+							"AWS_REGION"
+						)}.amazonaws.com/`,
+						env("CDN_URL"),
 					],
 					upgradeInsecureRequests: null,
 				},
@@ -29,6 +36,7 @@ export default [
 	},
 	"strapi::cors",
 	"strapi::poweredBy",
+	"strapi::logger",
 	"strapi::query",
 	"strapi::body",
 	"strapi::session",
