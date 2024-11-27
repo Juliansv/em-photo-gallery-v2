@@ -5,8 +5,7 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname:
-					"strapi-em-gallery-aws-s3-images-bucket.s3.sa-east-1.amazonaws.com",
+				hostname: "d1o5jnh608dftq.cloudfront.net",
 			},
 		],
 	},
