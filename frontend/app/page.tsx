@@ -1,11 +1,11 @@
-import { getHomeInfo } from "@/lib/strapi-helpers";
+import HeroSection from "./components/HeroSection";
+import GallerySection from "./components/ImageGallery";
 
 export default async function Home() {
-    const {title, subtitle} = await getHomeInfo();
   return (
-    <div className="container">
-      <h1>{title}</h1>
-      <h2>{subtitle}</h2>
-    </div>
+    <article>
+      <HeroSection />
+      <GallerySection />
+    </article>
   );
 }
