@@ -37,13 +37,13 @@
 
 @property --hue {
 	syntax: "<angle>";
-	initial-value: 0turn;
+	initial-value: 0.64turn;
 	inherits: false;
 }
 
 @keyframes hue-cycle {
 	to {
-		--hue: 1turn;
+		--hue: 1.64turn;
 	}
 }
 body {
