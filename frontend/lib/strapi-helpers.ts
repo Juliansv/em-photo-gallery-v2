@@ -1,4 +1,5 @@
 import { query } from "./strapi-query";
+import { orderCollection } from "./utils";
 
 export function getHomeInfo() {
 	return query("home").then((res) => {
@@ -15,8 +16,8 @@ export function getCollections() {
 }
 
 export function getCollection(slug: string) {
-	const params = `collections?filters[title][$eq]=${slug}&populate[collectionPhotos][fields][0]=url`;
+	const params = `collections?filters[title][$eq]=${slug}&populate[coverImage][fields][0]=url&populate[collectionPhotos][fields][0]=url`;
 	return query(params).then((res) => {
-		return res.data[0];
+		return orderCollection(res.data[0]);
 	});
 }
