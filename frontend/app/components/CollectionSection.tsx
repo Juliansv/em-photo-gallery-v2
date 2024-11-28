@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { Collection } from "@/lib/types";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 interface CollectionSectionProps {
 	collection: Collection;
@@ -35,11 +36,11 @@ const CollectionSection = ({
 			animateImage(ImageScope.current, {
 				y: -100,
 				opacity: 1,
-				transition: { duration: 0.5 },
+				transition: { duration: 1 },
 			});
 			animateTitle(titleScope.current, {
 				opacity: 1,
-				transition: { duration: 0.5 },
+				transition: { duration: 1 },
 			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,15 +65,17 @@ const CollectionSection = ({
 			</div>
 			<div className="flex w-1/2">
 				<div className="m-auto" ref={ref}>
-					<Image
-						priority={collectionIndex === 0}
-						src={collection.coverImage.url}
-						alt={collection.title}
-						width={500}
-						height={500}
-						ref={ImageScope}
-						className="h-auto w-auto translate-y-30 opacity-0"
-					/>
+					<Link href={collection.title} scroll={false}>
+						<Image
+							priority={collectionIndex === 0}
+							src={collection.coverImage.url}
+							alt={collection.title}
+							width={500}
+							height={500}
+							ref={ImageScope}
+							className="h-auto w-auto translate-y-30 opacity-0"
+						/>
+					</Link>
 				</div>
 			</div>
 		</section>
