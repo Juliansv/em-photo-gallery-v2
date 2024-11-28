@@ -13,3 +13,10 @@ export function getCollections() {
 		return res.data;
 	});
 }
+
+export function getCollection(slug: string) {
+	const params = `collections?filters[title][$eq]=${slug}&populate[collectionPhotos][fields][0]=url`;
+	return query(params).then((res) => {
+		return res.data[0];
+	});
+}
