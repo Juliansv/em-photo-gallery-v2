@@ -20,10 +20,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="scroll-smooth snap-y snap-mandatory">
+		<html lang="en" className="scroll-smooth snap-y snap-mandatory relative">
 			<body
-				className={`${PorterSans.className} antialiased overflow-x-clip`}
-                id="body"
+				className={`${PorterSans.className} antialiased overflow-x-hidden`}
 			>
 				{children}
 			</body>
