@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { Collection } from "@/lib/types";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 interface CollectionSectionProps {
@@ -31,10 +31,12 @@ const CollectionSection = ({
 	const [ImageScope, animateImage] = useAnimate();
 	const [titleScope, animateTitle] = useAnimate();
 
+    const [backgroundValue, setBackgroundColorValue] = useState("")
+
 	useEffect(() => {
 		if (isInView) {
 			animateImage(ImageScope.current, {
-				y: -100,
+				y: -10,
 				opacity: 1,
 				transition: { duration: 1 },
 			});
@@ -42,6 +44,8 @@ const CollectionSection = ({
 				opacity: 1,
 				transition: { duration: 1 },
 			});
+            // get the current background color of the body and store it in state
+            setBackgroundColorValue(getComputedStyle(document.body).backgroundColor)
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isInView]);
@@ -65,16 +69,17 @@ const CollectionSection = ({
 			</div>
 			<div className="flex w-1/2">
 				<div className="m-auto" ref={ref}>
-					<Link href={collection.title} scroll={false}>
-						<Image
-							priority={collectionIndex === 0}
-							src={collection.coverImage.url}
-							alt={collection.title}
-							width={500}
-							height={500}
-							ref={ImageScope}
-							className="h-auto w-auto translate-y-30 opacity-0"
-						/>
+					<Link href={{pathname: collection.title, query: {background: backgroundValue}}}>
+                        <motion.div ref={ImageScope} initial={{ y: 100 }} className="opacity-0">
+                            <Image
+                                priority={collectionIndex === 0}
+                                src={collection.coverImage.url}
+                                alt={collection.title}
+                                width={500}
+                                height={500}
+                                className="h-auto w-auto"
+                            />
+                        </motion.div>
 					</Link>
 				</div>
 			</div>
