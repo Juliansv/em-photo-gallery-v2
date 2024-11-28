@@ -7,15 +7,19 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-        "killport": "fuser -k 3000/tcp"
+		"killport": "fuser -k 3000/tcp"
 	},
 	"dependencies": {
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
 		"framer-motion": "12.0.0-alpha.1",
 		"lucide-react": "^0.462.0",
 		"next": "15.0.3",
 		"next-scroll-restorer": "^0.9.7",
 		"react": "19.0.0-rc-66855b96-20241106",
-		"react-dom": "19.0.0-rc-66855b96-20241106"
+		"react-dom": "19.0.0-rc-66855b96-20241106",
+		"tailwind-merge": "^2.5.5",
+		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "4.0.0-beta.2",
