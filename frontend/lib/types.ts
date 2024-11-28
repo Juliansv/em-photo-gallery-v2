@@ -1,4 +1,4 @@
-export interface CoverImage {
+export interface CollectionImage {
 	id: number;
 	documentId: string;
 	url: string;
@@ -7,5 +7,6 @@ export interface CoverImage {
 export interface Collection {
 	id: number;
 	title: string;
-	coverImage: CoverImage;
+	coverImage: CollectionImage;
+	collectionPhotos: CollectionImage[];
 }
