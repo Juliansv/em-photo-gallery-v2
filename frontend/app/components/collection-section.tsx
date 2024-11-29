@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import { Collection } from "@/lib/types";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 interface CollectionSectionProps {
 	collection: Collection;
@@ -31,7 +31,8 @@ const CollectionSection = ({
 	const [ImageScope, animateImage] = useAnimate();
 	const [titleScope, animateTitle] = useAnimate();
 
-    const [backgroundValue, setBackgroundColorValue] = useState("")
+	const [backgroundValue, setBackgroundColorValue] = useState("");
+	const [titleValue, setTitleValue] = useState("");
 
 	useEffect(() => {
 		if (isInView) {
@@ -44,8 +45,17 @@ const CollectionSection = ({
 				opacity: 1,
 				transition: { duration: 1 },
 			});
-            // get the current background color of the body and store it in state
-            setBackgroundColorValue(getComputedStyle(document.body).backgroundColor)
+			// get the current background color of the body and store it in state
+			setBackgroundColorValue(
+				getComputedStyle(document.body).backgroundColor
+			);
+			// get the current title color of the body and store it in state
+			const titleElement = document.getElementById(
+				`${collection.title}-id`
+			);
+			if (titleElement) {
+				setTitleValue(getComputedStyle(titleElement).color);
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isInView]);
@@ -62,24 +72,34 @@ const CollectionSection = ({
 						style={{ y }}
 						className="absolute top-[45%] left-[35%] text-4xl uppercase opacity-0"
 						ref={titleScope}
+						id={`${collection.title}-id`}
 					>
-						{collection.title}
+						<span>
+							{collection.title}
+						</span>
 					</motion.h3>
 				</div>
 			</div>
 			<div className="flex w-1/2">
 				<div className="m-auto" ref={ref}>
-					<Link href={{pathname: collection.title, query: {background: backgroundValue}}} prefetch={true}>
-                        <motion.div ref={ImageScope} initial={{ y: 100 }} className="opacity-0">
-                            <Image
-                                priority={collectionIndex === 0}
-                                src={collection.coverImage.url}
-                                alt={collection.title}
-                                width={500}
-                                height={500}
-                                className="h-auto w-auto"
-                            />
-                        </motion.div>
+					<Link
+						href={`/${collection.title}?background=${backgroundValue}&title=${collection.title}&titleColor=${titleValue}`}
+						prefetch={true}
+					>
+						<motion.div
+							ref={ImageScope}
+							initial={{ y: 100 }}
+							className="opacity-0"
+						>
+							<Image
+								priority={collectionIndex === 0}
+								src={collection.coverImage.url}
+								alt={collection.title}
+								width={500}
+								height={500}
+								className="h-auto w-auto"
+							/>
+						</motion.div>
 					</Link>
 				</div>
 			</div>
