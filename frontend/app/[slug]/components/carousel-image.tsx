@@ -1,7 +1,7 @@
 import { CollectionImage } from "@/lib/types";
 import Image from "next/image";
 
-const CarouselImage = async ({
+const CarouselImage = ({
 	photo,
 	index,
 	currentImage,

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ViewTransitions } from 'next-view-transitions'
 
 const PorterSans = localFont({
 	src: "./fonts/PorterSans.woff",
@@ -19,12 +20,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="scroll-smooth snap-y snap-mandatory relative">
-			<body
-				className={`${PorterSans.className} antialiased overflow-x-hidden`}
-			>
-				{children}
-			</body>
-		</html>
+        <ViewTransitions>
+            <html lang="en" className="scroll-smooth snap-y snap-mandatory relative">
+                <body
+                    className={`${PorterSans.className} antialiased overflow-x-hidden`}
+                >
+                    {children}
+                </body>
+            </html>
+        </ViewTransitions>
 	);
 }

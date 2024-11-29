@@ -32,6 +32,9 @@ dependencies:
   next-scroll-restorer:
     specifier: ^0.9.7
     version: 0.9.7(next@15.0.3)(react@19.0.0-rc-66855b96-20241106)
+  next-view-transitions:
+    specifier: ^0.3.2
+    version: 0.3.2(next@15.0.3)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
   plaiceholder:
     specifier: ^3.0.0
     version: 3.0.0(sharp@0.33.5)
@@ -2779,6 +2782,18 @@ packages:
       '@bladl/react-hooks': 1.5.2
       next: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
       react: 19.0.0-rc-66855b96-20241106
+    dev: false
+
+  /next-view-transitions@0.3.2(next@15.0.3)(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):
+    resolution: {integrity: sha512-77QRvHjKDQHBDbe/qTVh/p9zbx2AWUFvlmLpHZQtc+q0/a+QWn5fejU9TqrJdrHvwuc9rzqL6K5xpkRtyjQajw==}
+    peerDependencies:
+      next: ^14.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      next: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106)
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
     dev: false
 
   /next@15.0.3(react-dom@19.0.0-rc-66855b96-20241106)(react@19.0.0-rc-66855b96-20241106):

@@ -20,6 +20,8 @@ export default function CollectionGallery({
 }) {
 	const searchParams = useSearchParams();
 	const backgroundColor = searchParams.get("background");
+	const collectionTitle = searchParams.get("title");
+    const titleColor = searchParams.get("titleColor");
 
 	const sectionId = id;
 
@@ -62,17 +64,22 @@ export default function CollectionGallery({
 	}, [currentImage]);
 
 	useEffect(() => {
-		if (backgroundColor && sectionId) {
+		if (backgroundColor && sectionId && titleColor) {
 			const sectionElement = document.getElementById(sectionId);
-			if (sectionElement) {
+            const titleElement = document.getElementById(`${sectionId}-title`);
+			if (sectionElement && titleElement) {
 				sectionElement.style.backgroundColor = backgroundColor;
+                titleElement.style.color = titleColor;
 			}
 		}
-	}, [backgroundColor, sectionId]);
+	}, [backgroundColor, sectionId, titleColor]);
 
 	return (
-		<div className="h-screen flex flex-col" id={id}>
-			<div className="flex-grow relative p-4">
+		<div className="h-screen flex flex-col" id={sectionId}>
+			<div className="h-10 content-center m-4">
+				<h3 className="m-auto text-center text-4xl" id={`${sectionId}-title`}><span>{collectionTitle}</span></h3>
+			</div>
+			<div className="flex-grow relative px-4">
 				<div className="relative h-full">
 					<Image
 						src={photos[currentImage].url}
@@ -111,8 +118,8 @@ export default function CollectionGallery({
 							key={photo.id}
 							photo={photo}
 							index={index}
-                            currentImage={currentImage}
-                            handleImageClick={handleImageClick}
+							currentImage={currentImage}
+							handleImageClick={handleImageClick}
 						/>
 					))}
 				</div>
