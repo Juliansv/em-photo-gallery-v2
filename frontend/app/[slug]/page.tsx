@@ -1,6 +1,6 @@
 import { getCollection } from "@/lib/strapi-helpers";
 import { CollectionImage } from "@/lib/types";
-import Carousel from "./components/Carousel";
+import CollectionGallery from "./components/collection-gallery";
 
 const CollectionPage = async ({
 	params,
@@ -13,7 +13,7 @@ const CollectionPage = async ({
 
 	return (
 
-        <Carousel photos={photos} id={slug} />
+        <CollectionGallery photos={photos} id={slug} />
 	);
 };
 

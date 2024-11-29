@@ -8,21 +8,20 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { CollectionImage } from "@/lib/types";
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from "next/navigation";
+import CarouselImage from "./carousel-image";
 
-export default function ImageGallery({
+export default function CollectionGallery({
 	photos,
-    id,
+	id,
 }: {
 	photos: CollectionImage[];
-    id: string;
+	id: string;
 }) {
+	const searchParams = useSearchParams();
+	const backgroundColor = searchParams.get("background");
 
-    const searchParams = useSearchParams()
-    const backgroundColor = searchParams.get('background')
-
-    const sectionId = id
-
+	const sectionId = id;
 
 	const [currentImage, setCurrentImage] = useState(0);
 	const [modalOpen, setModalOpen] = useState(false);
@@ -62,14 +61,14 @@ export default function ImageGallery({
 		scrollToImage(currentImage);
 	}, [currentImage]);
 
-    useEffect(() => {
-        if (backgroundColor && sectionId) {
-            const sectionElement = document.getElementById(sectionId);
-            if (sectionElement) {
-                sectionElement.style.backgroundColor = backgroundColor;
-            }
-        }
-    }, [backgroundColor, sectionId]);
+	useEffect(() => {
+		if (backgroundColor && sectionId) {
+			const sectionElement = document.getElementById(sectionId);
+			if (sectionElement) {
+				sectionElement.style.backgroundColor = backgroundColor;
+			}
+		}
+	}, [backgroundColor, sectionId]);
 
 	return (
 		<div className="h-screen flex flex-col" id={id}>
@@ -104,36 +103,29 @@ export default function ImageGallery({
 			<div className="h-28 relative" onWheel={handleWheel}>
 				<div
 					ref={carouselRef}
-					className="flex overflow-x-auto space-x-2 p-4 h-full scrollbar-hide"
+					className="flex overflow-x-auto space-x-2 px-4 py-2 h-full scrollbar-hide"
 					style={{ scrollSnapType: "x mandatory" }}
 				>
 					{photos.map((photo, index) => (
-						<div
+						<CarouselImage
 							key={photo.id}
-							className={`flex-shrink-0 h-full aspect-[4/3] cursor-pointer ${
-								index === currentImage
-									? "ring-2 ring-primary"
-									: ""
-							}`}
-							style={{ scrollSnapAlign: "start" }}
-							onClick={() => handleImageClick(index)}
-						>
-							<Image
-								src={photo.url}
-								alt={photo.documentId}
-								width={120}
-								height={90}
-								className="object-cover h-full w-full"
-							/>
-						</div>
+							photo={photo}
+							index={index}
+                            currentImage={currentImage}
+                            handleImageClick={handleImageClick}
+						/>
 					))}
 				</div>
 			</div>
 
 			<Dialog open={modalOpen} onOpenChange={setModalOpen}>
 				<DialogContent className="max-w-[95vw] max-h-[95vh] w-full h-full p-0">
-                    <VisuallyHidden><DialogTitle></DialogTitle></VisuallyHidden>
-                    <VisuallyHidden><DialogDescription /></VisuallyHidden>
+					<VisuallyHidden>
+						<DialogTitle></DialogTitle>
+					</VisuallyHidden>
+					<VisuallyHidden>
+						<DialogDescription />
+					</VisuallyHidden>
 					<div className="relative w-full h-full">
 						<Image
 							src={photos[currentImage].url}
