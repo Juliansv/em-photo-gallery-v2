@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-
 const PorterSans = localFont({
 	src: "./fonts/PorterSans.woff",
 	variable: "--font-porter-sans",

@@ -1,11 +1,11 @@
-import HeroSection from "./components/HeroSection";
-import ImageGallery from "./components/ImageGallery";
+import HeroContainer from "./components/hero-container";
+import CollectionsContainer from "./components/collections-container";
 
 export default async function Home() {
 	return (
 		<article>
-			<HeroSection />
-			<ImageGallery />
+			<HeroContainer />
+			<CollectionsContainer />
 		</article>
 	);
 }
