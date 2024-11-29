@@ -46,7 +46,7 @@ p {
 }
 
 @layer base {
-  :root {
+	:root {
 		--background: 0 0% 100%;
 		--foreground: 0 0% 3.9%;
 		--card: 0 0% 100%;
@@ -73,7 +73,7 @@ p {
 		--chart-5: 27 87% 67%;
 		--radius: 0.5rem;
 	}
-  .dark {
+	.dark {
 		--background: 0 0% 3.9%;
 		--foreground: 0 0% 98%;
 		--card: 0 0% 3.9%;
@@ -102,10 +102,28 @@ p {
 }
 
 @layer base {
-  * {
-    @apply border-border;
+	* {
+		@apply border-border;
 	}
-  body {
-    @apply bg-background text-foreground;
+	body {
+		@apply bg-background text-foreground;
 	}
+}
+
+.cursor-expand {
+	cursor: url("data:image/svg+xml,%3Csvg width='40px' height='40px' viewBox='0 0 32 32' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:sketch='http://www.bohemiancoding.com/sketch/ns' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Ctitle%3Ezoom%3C/title%3E%3Cdesc%3ECreated with Sketch Beta.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' sketch:type='MSPage'%3E%3Cg id='Icon-Set' sketch:type='MSLayerGroup' transform='translate(-152.000000, -983.000000)' fill='%23000000'%3E%3Cpath d='M176.972,989 L172,989 C171.448,989 171,989.448 171,990 C171,990.553 171.448,991 172,991 L174.628,991 L169.83,995.799 L171.244,997.213 L176.022,992.435 L176,995 C176,995.553 176.448,996 177,996 C177.552,996 178,995.553 178,995 L178,990 C178,989.704 177.877,989.465 177.684,989.301 C177.502,989.115 177.251,989 176.972,989 L176.972,989 Z M182,1011 C182,1012.1 181.104,1013 180,1013 L156,1013 C154.896,1013 154,1012.1 154,1011 L154,987 C154,985.896 154.896,985 156,985 L180,985 C181.104,985 182,985.896 182,987 L182,1011 L182,1011 Z M180,983 L156,983 C153.791,983 152,984.791 152,987 L152,1011 C152,1013.21 153.791,1015 156,1015 L180,1015 C182.209,1015 184,1013.21 184,1011 L184,987 C184,984.791 182.209,983 180,983 L180,983 Z M164.756,1000.79 L159.978,1005.57 L160,1003 C160,1002.45 159.552,1002 159,1002 C158.448,1002 158,1002.45 158,1003 L158,1008 C158,1008.3 158.123,1008.54 158.316,1008.7 C158.497,1008.88 158.749,1009 159.028,1009 L164,1009 C164.552,1009 165,1008.55 165,1008 C165,1007.45 164.552,1007 164,1007 L161.372,1007 L166.17,1002.2 L164.756,1000.79 L164.756,1000.79 Z M177,1002 C176.448,1002 176,1002.45 176,1003 L176.022,1005.57 L171.244,1000.79 L169.83,1002.2 L174.628,1007 L172,1007 C171.448,1007 171,1007.45 171,1008 C171,1008.55 171.448,1009 172,1009 L176.972,1009 C177.251,1009 177.503,1008.88 177.684,1008.7 C177.877,1008.54 178,1008.3 178,1008 L178,1003 C178,1002.45 177.552,1002 177,1002 L177,1002 Z M164,991 C164.552,991 165,990.553 165,990 C165,989.448 164.552,989 164,989 L159.028,989 C158.749,989 158.498,989.115 158.316,989.301 C158.123,989.465 158,989.704 158,990 L158,995 C158,995.553 158.448,996 159,996 C159.552,996 160,995.553 160,995 L159.978,992.435 L164.756,997.213 L166.17,995.799 L161.372,991 L164,991 L164,991 Z' id='zoom' sketch:type='MSShapeGroup'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+			32 32,
+		auto;
+}
+
+.cursor-left {
+	cursor: url("data:image/svg+xml,%3Csvg width='40px' height='40px' viewBox='0 0 32 32' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:sketch='http://www.bohemiancoding.com/sketch/ns' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Ctitle%3Earrow-left-circle%3C/title%3E%3Cdesc%3ECreated with Sketch Beta.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' sketch:type='MSPage'%3E%3Cg id='Icon-Set' sketch:type='MSLayerGroup' transform='translate(-256.000000, -1087.000000)' fill='%23000000'%3E%3Cpath d='M279,1102 L268.414,1102 L272.536,1097.88 C272.926,1097.49 272.926,1096.86 272.536,1096.46 C272.145,1096.07 271.512,1096.07 271.121,1096.46 L265.464,1102.12 C265.225,1102.36 265.15,1102.69 265.205,1103 C265.15,1103.31 265.225,1103.64 265.464,1103.88 L271.121,1109.54 C271.512,1109.93 272.145,1109.93 272.536,1109.54 C272.926,1109.15 272.926,1108.51 272.536,1108.12 L268.414,1104 L279,1104 C279.552,1104 280,1103.55 280,1103 C280,1102.45 279.552,1102 279,1102 L279,1102 Z M272,1117 C264.268,1117 258,1110.73 258,1103 C258,1095.27 264.268,1089 272,1089 C279.732,1089 286,1095.27 286,1103 C286,1110.73 279.732,1117 272,1117 L272,1117 Z M272,1087 C263.164,1087 256,1094.16 256,1103 C256,1111.84 263.164,1119 272,1119 C280.836,1119 288,1111.84 288,1103 C288,1094.16 280.836,1087 272,1087 L272,1087 Z' id='arrow-left-circle' sketch:type='MSShapeGroup'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+			16 16,
+		auto;
+}
+
+.cursor-right {
+	cursor: url("data:image/svg+xml,%3Csvg width='40px' height='40px' viewBox='0 0 32 32' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:sketch='http://www.bohemiancoding.com/sketch/ns' fill='%23000000'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Ctitle%3Earrow-right-circle%3C/title%3E%3Cdesc%3ECreated with Sketch Beta.%3C/desc%3E%3Cdefs%3E%3C/defs%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' sketch:type='MSPage'%3E%3Cg id='Icon-Set' sketch:type='MSLayerGroup' transform='translate(-308.000000, -1087.000000)' fill='%23000000'%3E%3Cpath d='M324,1117 C316.268,1117 310,1110.73 310,1103 C310,1095.27 316.268,1089 324,1089 C331.732,1089 338,1095.27 338,1103 C338,1110.73 331.732,1117 324,1117 L324,1117 Z M324,1087 C315.163,1087 308,1094.16 308,1103 C308,1111.84 315.163,1119 324,1119 C332.837,1119 340,1111.84 340,1103 C340,1094.16 332.837,1087 324,1087 L324,1087 Z M330.535,1102.12 L324.879,1096.46 C324.488,1096.07 323.855,1096.07 323.465,1096.46 C323.074,1096.86 323.074,1097.49 323.465,1097.88 L327.586,1102 L317,1102 C316.447,1102 316,1102.45 316,1103 C316,1103.55 316.447,1104 317,1104 L327.586,1104 L323.465,1108.12 C323.074,1108.51 323.074,1109.15 323.465,1109.54 C323.855,1109.93 324.488,1109.93 324.879,1109.54 L330.535,1103.88 C330.775,1103.64 330.85,1103.31 330.795,1103 C330.85,1102.69 330.775,1102.36 330.535,1102.12 L330.535,1102.12 Z' id='arrow-right-circle' sketch:type='MSShapeGroup'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+			32 32,
+		auto;
 }
