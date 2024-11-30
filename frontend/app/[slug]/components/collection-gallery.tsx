@@ -8,7 +8,6 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { CollectionImage } from "@/lib/types";
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { useSearchParams } from "next/navigation";
 import CarouselImage from "./carousel-image";
 
 export default function CollectionGallery({
@@ -18,10 +17,9 @@ export default function CollectionGallery({
 	photos: CollectionImage[];
 	id: string;
 }) {
-	const searchParams = useSearchParams();
-	const backgroundColor = searchParams.get("background");
-	const collectionTitle = searchParams.get("title");
-    const titleColor = searchParams.get("titleColor");
+	const backgroundColor = sessionStorage.getItem("background");
+	const collectionTitle = sessionStorage.getItem("title");
+    const titleColor = sessionStorage.getItem("titleColor");
 
 	const sectionId = id;
 

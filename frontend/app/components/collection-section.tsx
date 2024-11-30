@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { Collection } from "@/lib/types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "next-view-transitions";
 
 interface CollectionSectionProps {
@@ -31,9 +31,6 @@ const CollectionSection = ({
 	const [ImageScope, animateImage] = useAnimate();
 	const [titleScope, animateTitle] = useAnimate();
 
-	const [backgroundValue, setBackgroundColorValue] = useState("");
-	const [titleValue, setTitleValue] = useState("");
-
 	useEffect(() => {
 		if (isInView) {
 			animateImage(ImageScope.current, {
@@ -46,16 +43,12 @@ const CollectionSection = ({
 				transition: { duration: 1 },
 			});
 			// get the current background color of the body and store it in state
-			setBackgroundColorValue(
-				getComputedStyle(document.body).backgroundColor
-			);
-			// get the current title color of the body and store it in state
-			const titleElement = document.getElementById(
-				`${collection.title}-id`
-			);
-			if (titleElement) {
-				setTitleValue(getComputedStyle(titleElement).color);
-			}
+			
+            sessionStorage.clear();
+            sessionStorage.setItem(`title`, collection.title);
+            sessionStorage.setItem(`background`, getComputedStyle(document.body).backgroundColor);
+            sessionStorage.setItem(`titleColor`, getComputedStyle(titleScope.current).color);
+			
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isInView]);
@@ -83,7 +76,7 @@ const CollectionSection = ({
 			<div className="flex w-1/2">
 				<div className="m-auto" ref={ref}>
 					<Link
-						href={`/${collection.title}?background=${backgroundValue}&title=${collection.title}&titleColor=${titleValue}`}
+						href={`/${collection.title}`}
 						prefetch={true}
 					>
 						<motion.div
