@@ -9,19 +9,21 @@ import { CollectionImage } from "@/lib/types";
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import CarouselImage from "./carousel-image";
+import useStore from "@/lib/store";
+
 
 export default function CollectionGallery({
 	photos,
-	id,
+	title,
 }: {
 	photos: CollectionImage[];
-	id: string;
+	title: string;
 }) {
-	const backgroundColor = sessionStorage.getItem("background");
-	const collectionTitle = sessionStorage.getItem("title");
-    const titleColor = sessionStorage.getItem("titleColor");
 
-	const sectionId = id;
+    const backgroundColor = useStore((state) => state.backgroundColor);
+    const titleColor = useStore((state) => state.titleColor);
+
+	const sectionId = title;
 
 	const [currentImage, setCurrentImage] = useState(0);
 	const [modalOpen, setModalOpen] = useState(false);
@@ -35,6 +37,7 @@ export default function CollectionGallery({
 	const scrollToImage = (index: number) => {
 		if (carouselRef.current) {
 			const imageWidth = carouselRef.current.children[0].clientWidth;
+            
 			carouselRef.current.scrollTo({
 				left: imageWidth * index,
 				behavior: "smooth",
@@ -61,21 +64,18 @@ export default function CollectionGallery({
 		scrollToImage(currentImage);
 	}, [currentImage]);
 
-	useEffect(() => {
-		if (backgroundColor && sectionId && titleColor) {
-			const sectionElement = document.getElementById(sectionId);
-            const titleElement = document.getElementById(`${sectionId}-title`);
-			if (sectionElement && titleElement) {
-				sectionElement.style.backgroundColor = backgroundColor;
-                titleElement.style.color = titleColor;
-			}
-		}
-	}, [backgroundColor, sectionId, titleColor]);
+
 
 	return (
-		<div className="h-screen flex flex-col" id={sectionId}>
+		<div className="h-screen flex flex-col" id={sectionId} style={{ backgroundColor: backgroundColor }}>
 			<div className="h-10 content-center m-4">
-				<h3 className="m-auto text-center text-4xl" id={`${sectionId}-title`}><span>{collectionTitle}</span></h3>
+				<h3
+					className="m-auto text-center text-4xl"
+					id={`${sectionId}-title`}
+                    style={{ color: titleColor }}
+				>
+					<span>{title}</span>
+				</h3>
 			</div>
 			<div className="flex-grow relative px-4">
 				<div className="relative h-full">

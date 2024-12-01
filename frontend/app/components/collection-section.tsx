@@ -11,6 +11,7 @@ import Image from "next/image";
 import { Collection } from "@/lib/types";
 import { useEffect, useRef } from "react";
 import { Link } from "next-view-transitions";
+import useStore from "@/lib/store";
 
 interface CollectionSectionProps {
 	collection: Collection;
@@ -23,11 +24,28 @@ const CollectionSection = ({
 }: CollectionSectionProps) => {
 	const sectionRef = useRef(null);
 	const isInView = useInView(sectionRef, { amount: "all", once: true });
+	const updateStoreWhenInView = useInView(sectionRef, { amount: "all" });
 
 	const ref = useRef(null);
 	const { scrollYProgress } = useScroll({ target: ref });
 	const y = useTransform(scrollYProgress, [0, 1], [-300, 350]);
 
+	// Set the title, title color, and background color in the store
+
+	const { setTitleColor, setBackgroundColor } = useStore();
+
+	useEffect(() => {
+		const titleElement = document.getElementById(`${collection.title}-id`);
+		if (titleElement) {
+			setTitleColor(getComputedStyle(titleElement).color);
+			setBackgroundColor(getComputedStyle(document.body).backgroundColor);
+		}
+		console.log("background color body: ", useStore.getState().backgroundColor);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [updateStoreWhenInView]);
+
+	// Animate the image and title when they are in view
 	const [ImageScope, animateImage] = useAnimate();
 	const [titleScope, animateTitle] = useAnimate();
 
@@ -42,13 +60,6 @@ const CollectionSection = ({
 				opacity: 1,
 				transition: { duration: 1 },
 			});
-			// get the current background color of the body and store it in state
-			
-            sessionStorage.clear();
-            sessionStorage.setItem(`title`, collection.title);
-            sessionStorage.setItem(`background`, getComputedStyle(document.body).backgroundColor);
-            sessionStorage.setItem(`titleColor`, getComputedStyle(titleScope.current).color);
-			
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isInView]);
@@ -67,18 +78,13 @@ const CollectionSection = ({
 						ref={titleScope}
 						id={`${collection.title}-id`}
 					>
-						<span>
-							{collection.title}
-						</span>
+						<span>{collection.title}</span>
 					</motion.h3>
 				</div>
 			</div>
 			<div className="flex w-1/2">
 				<div className="m-auto" ref={ref}>
-					<Link
-						href={`/${collection.title}`}
-						prefetch={true}
-					>
+					<Link href={`/${collection.title}`} prefetch={true}>
 						<motion.div
 							ref={ImageScope}
 							initial={{ y: 100 }}

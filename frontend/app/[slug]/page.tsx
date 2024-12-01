@@ -2,6 +2,7 @@ import { getCollection } from "@/lib/strapi-helpers";
 import { CollectionImage } from "@/lib/types";
 import CollectionGallery from "./components/collection-gallery";
 
+
 const CollectionPage = async ({
 	params,
 }: {
@@ -11,9 +12,10 @@ const CollectionPage = async ({
 
 	const photos: CollectionImage[] = await getCollection(slug);
 
+
 	return (
 
-        <CollectionGallery photos={photos} id={slug} />
+        <CollectionGallery photos={photos} title={slug} />
 	);
 };
 
