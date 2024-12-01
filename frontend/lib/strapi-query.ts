@@ -5,5 +5,6 @@ export function query(url: string) {
 		headers: {
 			Authorization: `Bearer ${STRAPI_TOKEN}`,
 		},
+		cache: "force-cache",
 	}).then((res) => res.json());
 }
